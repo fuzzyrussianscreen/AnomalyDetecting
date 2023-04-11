@@ -1,0 +1,1631 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#"
+     xml:base="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:swrl2="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled -->
+
+    <owl:AnnotationProperty rdf:about="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#hasMeasurement -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#hasMeasurement">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Well"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#hasMetrics -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#hasMetrics">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#hasAnomaly -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#hasAnomaly">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#hasDate -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#hasDate">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#hasDeltaPHI -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#hasDeltaPHI">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#hasDepth -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#hasDepth">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#hasGR -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#hasGR">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#hasIndexP -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#hasIndexP">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#hasWell_Name -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#hasWell_Name">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Well"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement"/>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Well -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Well"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI0 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI0">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasDeltaPHI rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-3.4</hasDeltaPHI>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasDeltaPHI rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-2.5</hasDeltaPHI>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI10 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI10">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasDeltaPHI rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">6.2</hasDeltaPHI>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI11 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI11">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasDeltaPHI rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-0.8</hasDeltaPHI>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI12 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI12">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasDeltaPHI rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.4</hasDeltaPHI>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI13 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI13">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasDeltaPHI rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4.1</hasDeltaPHI>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI14 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI14">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasDeltaPHI rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.6</hasDeltaPHI>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI15 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI15">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasDeltaPHI rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">6.1</hasDeltaPHI>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasDeltaPHI rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-0.1</hasDeltaPHI>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasDeltaPHI rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.0</hasDeltaPHI>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI4">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasDeltaPHI rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4.4</hasDeltaPHI>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI5">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasDeltaPHI rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4.9</hasDeltaPHI>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI6 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI6">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasDeltaPHI rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4.2</hasDeltaPHI>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI7 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI7">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasDeltaPHI rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.3</hasDeltaPHI>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI8 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI8">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasDeltaPHI rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">-0.2</hasDeltaPHI>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI9 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI9">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasDeltaPHI rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.5</hasDeltaPHI>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth0 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth0">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasDepth rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2998.5</hasDepth>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasDepth rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2999.0</hasDepth>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth10 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth10">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasDepth rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3003.5</hasDepth>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth11 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth11">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasDepth rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3049.0</hasDepth>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth12 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth12">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasDepth rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3049.5</hasDepth>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth13 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth13">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasDepth rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3050.0</hasDepth>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth14 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth14">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasDepth rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3050.5</hasDepth>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth15 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth15">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasDepth rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3051.0</hasDepth>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasDepth rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2999.5</hasDepth>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasDepth rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3000.0</hasDepth>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth4">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasDepth rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3000.5</hasDepth>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth5">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasDepth rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3001.0</hasDepth>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth6 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth6">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasDepth rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3001.5</hasDepth>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth7 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth7">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasDepth rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3002.0</hasDepth>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth8 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth8">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasDepth rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3002.5</hasDepth>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth9 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth9">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasDepth rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3003.0</hasDepth>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission0 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission0">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasGR rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">99.31</hasGR>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasGR rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">166.94</hasGR>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission10 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission10">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasGR rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">108.53</hasGR>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission11 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission11">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasGR rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">112.92</hasGR>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission12 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission12">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasGR rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">144.15</hasGR>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission13 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission13">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasGR rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">157.21</hasGR>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission14 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission14">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasGR rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">152.6</hasGR>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission15 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission15">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasGR rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">140.93</hasGR>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasGR rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">235.25</hasGR>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasGR rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">285.47</hasGR>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission4">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasGR rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">305.87</hasGR>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission5">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasGR rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">291.37</hasGR>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission6 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission6">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasGR rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">252.41</hasGR>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission7 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission7">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasGR rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">208.53</hasGR>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission8 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission8">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasGR rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">169.07</hasGR>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission9 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission9">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasGR rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">136.52</hasGR>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics0 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics0">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasIndexP rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.418</hasIndexP>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasIndexP rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.464</hasIndexP>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics10 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics10">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasIndexP rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.561</hasIndexP>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics11 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics11">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasIndexP rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.022</hasIndexP>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics12 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics12">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasIndexP rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.963</hasIndexP>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics13 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics13">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasIndexP rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.899</hasIndexP>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics14 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics14">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasIndexP rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.839</hasIndexP>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics15 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics15">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasIndexP rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.792</hasIndexP>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasIndexP rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.526</hasIndexP>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasIndexP rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.599</hasIndexP>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics4">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasIndexP rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.666</hasIndexP>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics5">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasIndexP rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.703</hasIndexP>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics6 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics6">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasIndexP rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.7</hasIndexP>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics7 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics7">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasIndexP rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.669</hasIndexP>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics8 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics8">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasIndexP rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.631</hasIndexP>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics9 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics9">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
+        <hasIndexP rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.594</hasIndexP>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement0 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement0">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI0"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth0"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission0"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics0"/>
+        <hasAnomaly rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rule2</hasAnomaly>
+        <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2030-07-29 00:00:00</hasDate>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI1"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth1"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission1"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics1"/>
+        <hasAnomaly rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rule2</hasAnomaly>
+        <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2030-07-30 00:00:00</hasDate>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement10 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement10">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI10"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth10"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission10"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics10"/>
+        <hasAnomaly rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rule1</hasAnomaly>
+        <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2030-08-08 00:00:00</hasDate>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement11 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement11">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI11"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth11"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission11"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics11"/>
+        <hasAnomaly rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rule2</hasAnomaly>
+        <hasAnomaly rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rule3</hasAnomaly>
+        <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2030-11-07 00:00:00</hasDate>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement12 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement12">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI12"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth12"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission12"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics12"/>
+        <hasAnomaly rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rule3</hasAnomaly>
+        <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2030-11-08 00:00:00</hasDate>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement13 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement13">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI13"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth13"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission13"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics13"/>
+        <hasAnomaly rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rule3</hasAnomaly>
+        <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2030-11-09 00:00:00</hasDate>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement14 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement14">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI14"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth14"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission14"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics14"/>
+        <hasAnomaly rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rule3</hasAnomaly>
+        <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2030-11-10 00:00:00</hasDate>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement15 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement15">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI15"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth15"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission15"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics15"/>
+        <hasAnomaly rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rule3</hasAnomaly>
+        <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2030-11-11 00:00:00</hasDate>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI2"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth2"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission2"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics2"/>
+        <hasAnomaly rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rule2</hasAnomaly>
+        <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2030-07-31 00:00:00</hasDate>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI3"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth3"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission3"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics3"/>
+        <hasAnomaly rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rule1</hasAnomaly>
+        <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2030-08-01 00:00:00</hasDate>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement4">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI4"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth4"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission4"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics4"/>
+        <hasAnomaly rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rule1</hasAnomaly>
+        <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2030-08-02 00:00:00</hasDate>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement5">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI5"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth5"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission5"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics5"/>
+        <hasAnomaly rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rule1</hasAnomaly>
+        <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2030-08-03 00:00:00</hasDate>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement6 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement6">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI6"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth6"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission6"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics6"/>
+        <hasAnomaly rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rule1</hasAnomaly>
+        <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2030-08-04 00:00:00</hasDate>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement7 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement7">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI7"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth7"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission7"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics7"/>
+        <hasAnomaly rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rule1</hasAnomaly>
+        <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2030-08-05 00:00:00</hasDate>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement8 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement8">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI8"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth8"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission8"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics8"/>
+        <hasAnomaly rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rule2</hasAnomaly>
+        <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2030-08-06 00:00:00</hasDate>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement9 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement9">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI9"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth9"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission9"/>
+        <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics9"/>
+        <hasAnomaly rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rule1</hasAnomaly>
+        <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2030-08-07 00:00:00</hasDate>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#NEWBY -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#NEWBY">
+        <rdf:type rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Well"/>
+        <hasMeasurement rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement0"/>
+        <hasMeasurement rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement1"/>
+        <hasMeasurement rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement10"/>
+        <hasMeasurement rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement11"/>
+        <hasMeasurement rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement12"/>
+        <hasMeasurement rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement13"/>
+        <hasMeasurement rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement14"/>
+        <hasMeasurement rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement15"/>
+        <hasMeasurement rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement2"/>
+        <hasMeasurement rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement3"/>
+        <hasMeasurement rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement4"/>
+        <hasMeasurement rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement5"/>
+        <hasMeasurement rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement6"/>
+        <hasMeasurement rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement7"/>
+        <hasMeasurement rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement8"/>
+        <hasMeasurement rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement9"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Rules
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#w">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#m">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#delta">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#deltaValue">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#dep">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#depValue">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#index">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#indexValue">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Variable"/>
+    </rdf:Description>
+    <rdf:Description>
+        <swrl2:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrl2:isRuleEnabled>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">S2</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Well"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#w"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#hasMeasurement"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#w"/>
+                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#m"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement"/>
+                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#m"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#hasMetrics"/>
+                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#m"/>
+                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#delta"/>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                <rdf:first>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI"/>
+                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#delta"/>
+                                                    </rdf:Description>
+                                                </rdf:first>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                        <rdf:first>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#hasDeltaPHI"/>
+                                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#delta"/>
+                                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#deltaValue"/>
+                                                            </rdf:Description>
+                                                        </rdf:first>
+                                                        <rdf:rest>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                <rdf:first>
+                                                                    <rdf:Description>
+                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#hasMetrics"/>
+                                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#m"/>
+                                                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#dep"/>
+                                                                    </rdf:Description>
+                                                                </rdf:first>
+                                                                <rdf:rest>
+                                                                    <rdf:Description>
+                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                        <rdf:first>
+                                                                            <rdf:Description>
+                                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                                                                <swrl:classPredicate rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth"/>
+                                                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#dep"/>
+                                                                            </rdf:Description>
+                                                                        </rdf:first>
+                                                                        <rdf:rest>
+                                                                            <rdf:Description>
+                                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                                <rdf:first>
+                                                                                    <rdf:Description>
+                                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                                                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#hasDepth"/>
+                                                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#dep"/>
+                                                                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#depValue"/>
+                                                                                    </rdf:Description>
+                                                                                </rdf:first>
+                                                                                <rdf:rest>
+                                                                                    <rdf:Description>
+                                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                                        <rdf:first>
+                                                                                            <rdf:Description>
+                                                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                                                                                <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#lessThan"/>
+                                                                                                <swrl:arguments>
+                                                                                                    <rdf:Description>
+                                                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                        <rdf:first rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#deltaValue"/>
+                                                                                                        <rdf:rest>
+                                                                                                            <rdf:Description>
+                                                                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</rdf:first>
+                                                                                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                                                                            </rdf:Description>
+                                                                                                        </rdf:rest>
+                                                                                                    </rdf:Description>
+                                                                                                </swrl:arguments>
+                                                                                            </rdf:Description>
+                                                                                        </rdf:first>
+                                                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                                                    </rdf:Description>
+                                                                                </rdf:rest>
+                                                                            </rdf:Description>
+                                                                        </rdf:rest>
+                                                                    </rdf:Description>
+                                                                </rdf:rest>
+                                                            </rdf:Description>
+                                                        </rdf:rest>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#hasAnomaly"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#m"/>
+                        <swrl:argument2 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rule2</swrl:argument2>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrl2:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrl2:isRuleEnabled>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">S3</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Well"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#w"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#hasMeasurement"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#w"/>
+                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#m"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement"/>
+                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#m"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#hasMetrics"/>
+                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#m"/>
+                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#index"/>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                <rdf:first>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics"/>
+                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#index"/>
+                                                    </rdf:Description>
+                                                </rdf:first>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                        <rdf:first>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#hasIndexP"/>
+                                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#index"/>
+                                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#indexValue"/>
+                                                            </rdf:Description>
+                                                        </rdf:first>
+                                                        <rdf:rest>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                <rdf:first>
+                                                                    <rdf:Description>
+                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#hasMetrics"/>
+                                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#m"/>
+                                                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#dep"/>
+                                                                    </rdf:Description>
+                                                                </rdf:first>
+                                                                <rdf:rest>
+                                                                    <rdf:Description>
+                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                        <rdf:first>
+                                                                            <rdf:Description>
+                                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                                                                <swrl:classPredicate rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth"/>
+                                                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#dep"/>
+                                                                            </rdf:Description>
+                                                                        </rdf:first>
+                                                                        <rdf:rest>
+                                                                            <rdf:Description>
+                                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                                <rdf:first>
+                                                                                    <rdf:Description>
+                                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                                                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#hasDepth"/>
+                                                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#dep"/>
+                                                                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#depValue"/>
+                                                                                    </rdf:Description>
+                                                                                </rdf:first>
+                                                                                <rdf:rest>
+                                                                                    <rdf:Description>
+                                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                                        <rdf:first>
+                                                                                            <rdf:Description>
+                                                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                                                                                <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#greaterThan"/>
+                                                                                                <swrl:arguments>
+                                                                                                    <rdf:Description>
+                                                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                        <rdf:first rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#indexValue"/>
+                                                                                                        <rdf:rest>
+                                                                                                            <rdf:Description>
+                                                                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.75</rdf:first>
+                                                                                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                                                                            </rdf:Description>
+                                                                                                        </rdf:rest>
+                                                                                                    </rdf:Description>
+                                                                                                </swrl:arguments>
+                                                                                            </rdf:Description>
+                                                                                        </rdf:first>
+                                                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                                                    </rdf:Description>
+                                                                                </rdf:rest>
+                                                                            </rdf:Description>
+                                                                        </rdf:rest>
+                                                                    </rdf:Description>
+                                                                </rdf:rest>
+                                                            </rdf:Description>
+                                                        </rdf:rest>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#hasAnomaly"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#m"/>
+                        <swrl:argument2 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rule3</swrl:argument2>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+    <rdf:Description>
+        <swrl2:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</swrl2:isRuleEnabled>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">S1</rdfs:label>
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Imp"/>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Well"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#w"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#hasMeasurement"/>
+                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#w"/>
+                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#m"/>
+                            </rdf:Description>
+                        </rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                <rdf:first>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Measurement"/>
+                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#m"/>
+                                    </rdf:Description>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                        <rdf:first>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#hasMetrics"/>
+                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#m"/>
+                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#index"/>
+                                            </rdf:Description>
+                                        </rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                <rdf:first>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                                        <swrl:classPredicate rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics"/>
+                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#index"/>
+                                                    </rdf:Description>
+                                                </rdf:first>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                        <rdf:first>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                                                <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#hasIndexP"/>
+                                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#index"/>
+                                                                <swrl:argument2 rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#indexValue"/>
+                                                            </rdf:Description>
+                                                        </rdf:first>
+                                                        <rdf:rest>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                <rdf:first>
+                                                                    <rdf:Description>
+                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#IndividualPropertyAtom"/>
+                                                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#hasMetrics"/>
+                                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#m"/>
+                                                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#dep"/>
+                                                                    </rdf:Description>
+                                                                </rdf:first>
+                                                                <rdf:rest>
+                                                                    <rdf:Description>
+                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                        <rdf:first>
+                                                                            <rdf:Description>
+                                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                                                                                <swrl:classPredicate rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth"/>
+                                                                                <swrl:argument1 rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#dep"/>
+                                                                            </rdf:Description>
+                                                                        </rdf:first>
+                                                                        <rdf:rest>
+                                                                            <rdf:Description>
+                                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                                <rdf:first>
+                                                                                    <rdf:Description>
+                                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                                                                                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#hasDepth"/>
+                                                                                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#dep"/>
+                                                                                        <swrl:argument2 rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#depValue"/>
+                                                                                    </rdf:Description>
+                                                                                </rdf:first>
+                                                                                <rdf:rest>
+                                                                                    <rdf:Description>
+                                                                                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                                                                                        <rdf:first>
+                                                                                            <rdf:Description>
+                                                                                                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#BuiltinAtom"/>
+                                                                                                <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#lessThan"/>
+                                                                                                <swrl:arguments>
+                                                                                                    <rdf:Description>
+                                                                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                        <rdf:first rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#indexValue"/>
+                                                                                                        <rdf:rest>
+                                                                                                            <rdf:Description>
+                                                                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                                                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.75</rdf:first>
+                                                                                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                                                                            </rdf:Description>
+                                                                                                        </rdf:rest>
+                                                                                                    </rdf:Description>
+                                                                                                </swrl:arguments>
+                                                                                            </rdf:Description>
+                                                                                        </rdf:first>
+                                                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                                                    </rdf:Description>
+                                                                                </rdf:rest>
+                                                                            </rdf:Description>
+                                                                        </rdf:rest>
+                                                                    </rdf:Description>
+                                                                </rdf:rest>
+                                                            </rdf:Description>
+                                                        </rdf:rest>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </rdf:rest>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#hasAnomaly"/>
+                        <swrl:argument1 rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#m"/>
+                        <swrl:argument2 rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rule1</swrl:argument2>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+

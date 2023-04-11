@@ -8,7 +8,8 @@
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:swrl="http://www.w3.org/2003/11/swrl#"
      xmlns:swrl2="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#"
-     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#">
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:anomalysearch="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#">
     <owl:Ontology rdf:about="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch"/>
     
 
@@ -104,7 +105,7 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#DeltaPHI"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
     </owl:DatatypeProperty>
     
 
@@ -116,7 +117,7 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
     </owl:DatatypeProperty>
     
 
@@ -128,7 +129,7 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
     </owl:DatatypeProperty>
     
 
@@ -140,7 +141,7 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Metrics"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
     </owl:DatatypeProperty>
     
 
@@ -876,7 +877,6 @@
         <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth0"/>
         <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission0"/>
         <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics0"/>
-        <hasAnomaly rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rule2</hasAnomaly>
         <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2030-07-29 00:00:00</hasDate>
     </owl:NamedIndividual>
     
@@ -890,7 +890,6 @@
         <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth1"/>
         <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission1"/>
         <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics1"/>
-        <hasAnomaly rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rule2</hasAnomaly>
         <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2030-07-30 00:00:00</hasDate>
     </owl:NamedIndividual>
     
@@ -904,7 +903,6 @@
         <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth10"/>
         <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission10"/>
         <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics10"/>
-        <hasAnomaly rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rule1</hasAnomaly>
         <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2030-08-08 00:00:00</hasDate>
     </owl:NamedIndividual>
     
@@ -918,8 +916,6 @@
         <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth11"/>
         <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission11"/>
         <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics11"/>
-        <hasAnomaly rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rule2</hasAnomaly>
-        <hasAnomaly rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rule3</hasAnomaly>
         <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2030-11-07 00:00:00</hasDate>
     </owl:NamedIndividual>
     
@@ -933,7 +929,6 @@
         <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth12"/>
         <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission12"/>
         <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics12"/>
-        <hasAnomaly rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rule3</hasAnomaly>
         <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2030-11-08 00:00:00</hasDate>
     </owl:NamedIndividual>
     
@@ -947,7 +942,6 @@
         <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth13"/>
         <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission13"/>
         <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics13"/>
-        <hasAnomaly rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rule3</hasAnomaly>
         <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2030-11-09 00:00:00</hasDate>
     </owl:NamedIndividual>
     
@@ -961,7 +955,6 @@
         <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth14"/>
         <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission14"/>
         <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics14"/>
-        <hasAnomaly rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rule3</hasAnomaly>
         <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2030-11-10 00:00:00</hasDate>
     </owl:NamedIndividual>
     
@@ -975,7 +968,6 @@
         <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth15"/>
         <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission15"/>
         <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics15"/>
-        <hasAnomaly rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rule3</hasAnomaly>
         <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2030-11-11 00:00:00</hasDate>
     </owl:NamedIndividual>
     
@@ -989,7 +981,6 @@
         <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth2"/>
         <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission2"/>
         <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics2"/>
-        <hasAnomaly rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rule2</hasAnomaly>
         <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2030-07-31 00:00:00</hasDate>
     </owl:NamedIndividual>
     
@@ -1003,7 +994,6 @@
         <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth3"/>
         <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission3"/>
         <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics3"/>
-        <hasAnomaly rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rule1</hasAnomaly>
         <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2030-08-01 00:00:00</hasDate>
     </owl:NamedIndividual>
     
@@ -1017,7 +1007,6 @@
         <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth4"/>
         <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission4"/>
         <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics4"/>
-        <hasAnomaly rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rule1</hasAnomaly>
         <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2030-08-02 00:00:00</hasDate>
     </owl:NamedIndividual>
     
@@ -1031,7 +1020,6 @@
         <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth5"/>
         <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission5"/>
         <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics5"/>
-        <hasAnomaly rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rule1</hasAnomaly>
         <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2030-08-03 00:00:00</hasDate>
     </owl:NamedIndividual>
     
@@ -1045,7 +1033,6 @@
         <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth6"/>
         <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission6"/>
         <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics6"/>
-        <hasAnomaly rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rule1</hasAnomaly>
         <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2030-08-04 00:00:00</hasDate>
     </owl:NamedIndividual>
     
@@ -1059,7 +1046,6 @@
         <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth7"/>
         <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission7"/>
         <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics7"/>
-        <hasAnomaly rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rule1</hasAnomaly>
         <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2030-08-05 00:00:00</hasDate>
     </owl:NamedIndividual>
     
@@ -1073,7 +1059,6 @@
         <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth8"/>
         <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission8"/>
         <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics8"/>
-        <hasAnomaly rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rule2</hasAnomaly>
         <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2030-08-06 00:00:00</hasDate>
     </owl:NamedIndividual>
     
@@ -1087,7 +1072,6 @@
         <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Depth9"/>
         <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Gamma_emission9"/>
         <hasMetrics rdf:resource="http://www.semanticweb.org/dimon/ontologies/2022/0/AnomalySearch#Index_petrophysics9"/>
-        <hasAnomaly rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rule1</hasAnomaly>
         <hasDate rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2030-08-07 00:00:00</hasDate>
     </owl:NamedIndividual>
     
