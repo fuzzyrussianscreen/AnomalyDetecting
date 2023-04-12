@@ -6,6 +6,8 @@ import pandas as pd
 from owlready2 import *
 from tensorflow import keras
 from tensorflow.keras import layers
+from tensorflow.keras import metrics
+from sklearn.preprocessing import MinMaxScaler
 
 pd.set_option('display.max_columns', None)
 pd.set_option('display.max_colwidth', None)
@@ -13,11 +15,18 @@ pd.options.display.expand_frame_repr = False
 
 
 def SearchAnomaly(df_full, df):
-	split = 0.5
+	# split = 0.35
+	split = 200/len(df)
 	# print(df)
 	cutoff = int(len(df) * split)
+
+
+	scaler = MinMaxScaler(feature_range=(0, 1))
+	df["GR"] = scaler.fit_transform(df["GR"].values.reshape(-1, 1))
+
 	train_df = df.head(cutoff)
 	test_df = df.tail(len(df) - cutoff)
+
 
 	training_mean = train_df.mean()
 	training_std = train_df.std()
@@ -37,23 +46,48 @@ def SearchAnomaly(df_full, df):
 	x_train = create_sequences(df_training_value.values)
 	x_test = create_sequences(df_test_value.values)
 
+	kernel_size = 7
+	strides= 2
+	filters = 32
+	activation = "selu"
+
+
 	model = keras.Sequential(
 		[
 			layers.Input(shape=(x_train.shape[1], x_train.shape[2])),
-			layers.Conv1D(filters=32, kernel_size=7, padding="same", strides=2, activation="relu"),
+			layers.Conv1D(filters=filters, kernel_size=kernel_size, padding="same", strides=strides, activation=activation),
 			layers.Dropout(rate=0.2),
-			layers.Conv1D(filters=16, kernel_size=7, padding="same", strides=2, activation="relu"),
-			layers.Conv1DTranspose(filters=16, kernel_size=7, padding="same", strides=2, activation="relu"),
+			layers.Conv1D(filters=filters/2, kernel_size=kernel_size, padding="same", strides=strides, activation=activation),
+			# layers.Conv1DTranspose(filters=filters/4, kernel_size=kernel_size, padding="same", strides=strides, activation=activation),
+			# layers.Dropout(rate=0.2),
+			# layers.Conv1D(filters=filters/4, kernel_size=kernel_size, padding="same", strides=strides, activation=activation),
+			layers.Conv1DTranspose(filters=filters/2, kernel_size=kernel_size, padding="same", strides=strides, activation=activation),
 			layers.Dropout(rate=0.2),
-			layers.Conv1DTranspose(filters=32, kernel_size=7, padding="same", strides=2, activation="relu"),
-			layers.Conv1DTranspose(filters=1, kernel_size=7, padding="same", batch_size=50),
+			layers.Conv1DTranspose(filters=filters, kernel_size=kernel_size, padding="same", strides=strides, activation=activation),
+			layers.Conv1DTranspose(filters=1, kernel_size=kernel_size, padding="same", batch_size=50),
+			layers.Dense(1, activation='sigmoid', name='decoder_dense')
 		]
 	)
-	model.compile(optimizer=keras.optimizers.Adam(learning_rate=0.001), loss="mse")
+
+	# print(x_train.shape[2], x_train.shape[1])
+
+	# model = keras.Sequential([
+	# 	layers.LSTM(50, activation='relu', input_shape=(x_train.shape[1], x_train.shape[2])),
+	# 	layers.Dense(1, activation='sigmoid', name='decoder_dense')])
+
+	model.compile(optimizer=keras.optimizers.legacy.Adam(learning_rate=0.001), loss="mse", metrics=[
+																									# metrics.Precision(),
+																									# metrics.AUC(),
+																									metrics.MeanAbsoluteError(),
+																									metrics.MeanSquaredError(),
+																									metrics.Recall()
+																									])
 	model.summary()
 
-	history = model.fit(x_train, x_train, epochs=50, batch_size=50, validation_split=0.1, verbose=0,
-	                    callbacks=[keras.callbacks.EarlyStopping(monitor="val_loss", patience=5, mode="min")])
+	history = model.fit(x_train, x_train, epochs=100, batch_size=50, validation_split=0.1, verbose=0,
+	                    callbacks=[keras.callbacks.EarlyStopping(monitor="val_loss", patience=10, mode="min")])
+
+	print(pd.DataFrame(history.history))
 
 	x_train_pred = model.predict(x_train)
 	train_mae_loss = np.mean(np.abs(x_train_pred - x_train), axis=1)
@@ -64,6 +98,14 @@ def SearchAnomaly(df_full, df):
 
 	test_mae_loss = np.mean(np.abs(x_test_pred - x_test), axis=1)
 
+	# print(x_test_pred)
+	# print(x_test)
+
+	# prec = metrics.Precision()
+	# prec.update_state(x_test_pred, x_test)
+
+	# print("Precision "+prec.result().numpy())
+
 	anomalies = test_mae_loss > threshold
 	anomalous_data_indices = []
 	for data_idx in range(TIME_STEPS - 1, len(df_test_value) - TIME_STEPS + 1):
@@ -73,6 +115,11 @@ def SearchAnomaly(df_full, df):
 
 	return df_subset
 
+def LoadSWRL(path):
+	onto = get_ontology("../../Sources/ontology/ontology_full.owl").load()
+	with onto:
+		return onto.rules()
+
 
 def UsingOntology(df_anomaly, path):
 	ontoCopy = get_ontology(path).load()
@@ -81,13 +128,13 @@ def UsingOntology(df_anomaly, path):
 		for individual in ontoCopy.individuals():
 			destroy_entity(individual)
 		ontoCopy.save(file="../../Sources/ontology/ontology_full.owl", format="rdfxml")
-	onto = get_ontology("../Sources/ontology/ontology_full.owl").load()
+	onto = get_ontology("../../Sources/ontology/ontology_full.owl").load()
 	with onto:
 
 		well = None
 		index = 0
 		listMesure = []
-		print(len(df_anomaly))
+		#print(len(df_anomaly))
 		if len(df_anomaly) > 1:
 
 			for date, anomaly in df_anomaly.iterrows():
@@ -111,11 +158,14 @@ def UsingOntology(df_anomaly, path):
 				well.hasMeasurement = listMesure
 
 			# sync_reasoner_hermit(infer_property_values=True, debug=3)
+			sync_reasoner_pellet(infer_property_values=True, infer_data_property_values=True)
 			onto.save(file="../../Sources/ontology/ontology_full.owl", format="rdfxml")
 
-	ctypes.windll.user32.MessageBoxW(0, "Запустите правила", "Пауза", 1)
+	#ctypes.windll.user32.MessageBoxW(0, "Запустите правила", "Пауза", 1)
 
-	onto = get_ontology("../Sources/ontology/ontology_full.owl").load()
+
+
+	onto = get_ontology("../../Sources/ontology/ontology_full.owl").load()
 	with onto:
 		# print(df_anomaly.index)
 		anomalous_data_indices = []
@@ -129,14 +179,14 @@ def UsingOntology(df_anomaly, path):
 	# print(anomalous_data_indices)
 	# onto2.save(file="../Sourses/ontology_full.owl", format="rdfxml")
 
-	print(anomalous_data_indices)
+	#print(anomalous_data_indices)
 	return anomalous_data_indices
 
 
 def printDFOntology(axex, dataForName, df_subset, owl_ontology):
-	print(dataForName)
-	print(df_subset)
-	print(owl_ontology)
+	#print(dataForName)
+	#print(df_subset)
+	#print(owl_ontology)
 
 	dataForName[["GR"]].plot(ax=axex[0], legend=False, color="black")
 	dataForName[["DeltaPHI"]].plot(ax=axex[1], legend=False, color="black")
@@ -198,7 +248,7 @@ def printDF(axex, dataForName):
 def startSearch(path):
 	with open(path, newline='') as csvfile:
 		date = datetime.date.today()
-		dfSource = pd.DataFrame(csv.reader(csvfile, delimiter=',', quotechar='|'))
+		dfSource = pd.DataFrame(csv.reader(csvfile, delimiter=';', quotechar='|'))
 
 		dfSource.columns = dfSource.iloc[0]
 		dfSource.drop([0], inplace=True)
@@ -217,10 +267,10 @@ def startSearch(path):
 		# ['CHURCHMAN BIBLE' 'CROSS H CATTLE' 'LUKE G U' 'NEWBY' 'NOLAN' 'Recruit F9' 'SHANKLE' 'SHRIMPLIN']
 		dfNames = dfNames.drop(np.where(dfNames[0] == 'Recruit F9')[0]).to_numpy()
 
-		for Name in dfNames[6:7]:
-			Name = Name[0]
-			dataForName = dfSource.loc[dfSource['Well Name'] == Name]
+		#for Name in dfNames[0]:
+		#	Name = Name[0]
+		#	dataForName = dfSource.loc[dfSource['Well Name'] == Name]
 
 	# axex = printDF(dfSource, axex)
 
-	return dataForName
+	return dfSource
