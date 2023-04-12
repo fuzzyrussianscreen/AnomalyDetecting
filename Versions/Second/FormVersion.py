@@ -22,10 +22,13 @@ def SearchAnomaly(df_full, df):
 
 
 	scaler = MinMaxScaler(feature_range=(0, 1))
-	df["GR"] = scaler.fit_transform(df["GR"].values.reshape(-1, 1))
 
-	train_df = df.head(cutoff)
-	test_df = df.tail(len(df) - cutoff)
+	scaleddf = df.loc[:, ['GR']]
+	scaleddf["GR"] = scaler.fit_transform(df.loc[:, ["GR"]].values.reshape(-1, 1))
+
+
+	train_df = scaleddf.head(cutoff)
+	test_df = scaleddf.tail(len(scaleddf) - cutoff)
 
 
 	training_mean = train_df.mean()
@@ -36,15 +39,31 @@ def SearchAnomaly(df_full, df):
 
 	TIME_STEPS = 12
 
-	def create_sequences(values, time_steps=TIME_STEPS):
-		output = []
-		for i in range(0, len(values) - time_steps + 1):
-			output.append(values[i: (i + time_steps)])
+	def create_sequencesXY(values, time_steps=TIME_STEPS):
+		x, y = [], []
+		# for i in range(0, len(values) - time_steps + 1):
+		for i in range(time_steps, len(values)):
+			x.append(values[i-time_steps:i, 0])
+			y.append(values[i, 0])
 
-		return np.stack(output)
+		return np.array(x), np.array(y)
 
-	x_train = create_sequences(df_training_value.values)
-	x_test = create_sequences(df_test_value.values)
+	def	create_sequencesX(values, time_steps=TIME_STEPS):
+		x = []
+		for i in range(time_steps, len(values)):
+			x.append(values[i - time_steps:i, 0])
+
+		return np.array(x)
+
+	x_train, y_train = create_sequencesXY(df_training_value.values)
+	x_test = create_sequencesX(df_test_value.values)
+
+	x_train = np.reshape(x_train, (x_train.shape[0], x_train.shape[1], 1))
+	x_test = np.reshape(x_test, (x_test.shape[0], x_test.shape[1], 1))
+
+	print(x_train.shape)
+	print(y_train.shape)
+	print(x_test.shape)
 
 	kernel_size = 7
 	strides= 2
@@ -52,45 +71,47 @@ def SearchAnomaly(df_full, df):
 	activation = "selu"
 
 
-	model = keras.Sequential(
-		[
-			layers.Input(shape=(x_train.shape[1], x_train.shape[2])),
-			layers.Conv1D(filters=filters, kernel_size=kernel_size, padding="same", strides=strides, activation=activation),
-			layers.Dropout(rate=0.2),
-			layers.Conv1D(filters=filters/2, kernel_size=kernel_size, padding="same", strides=strides, activation=activation),
-			# layers.Conv1DTranspose(filters=filters/4, kernel_size=kernel_size, padding="same", strides=strides, activation=activation),
-			# layers.Dropout(rate=0.2),
-			# layers.Conv1D(filters=filters/4, kernel_size=kernel_size, padding="same", strides=strides, activation=activation),
-			layers.Conv1DTranspose(filters=filters/2, kernel_size=kernel_size, padding="same", strides=strides, activation=activation),
-			layers.Dropout(rate=0.2),
-			layers.Conv1DTranspose(filters=filters, kernel_size=kernel_size, padding="same", strides=strides, activation=activation),
-			layers.Conv1DTranspose(filters=1, kernel_size=kernel_size, padding="same", batch_size=50),
-			layers.Dense(1, activation='sigmoid', name='decoder_dense')
-		]
-	)
+	# model = keras.Sequential(
+	# 	[
+	# 		layers.Input(shape=(x_train.shape[1], x_train.shape[2])),
+	# 		layers.Conv1D(filters=filters, kernel_size=kernel_size, padding="same", strides=strides, activation=activation),
+	# 		layers.Dropout(rate=0.2),
+	# 		layers.Conv1D(filters=filters/2, kernel_size=kernel_size, padding="same", strides=strides, activation=activation),
+	# 		layers.Conv1DTranspose(filters=filters/2, kernel_size=kernel_size, padding="same", strides=strides, activation=activation),
+	# 		layers.Dropout(rate=0.2),
+	# 		layers.Conv1DTranspose(filters=filters, kernel_size=kernel_size, padding="same", strides=strides, activation=activation),
+	# 		layers.Conv1DTranspose(filters=1, kernel_size=kernel_size, padding="same", batch_size=50),
+	# 		layers.Dense(1, activation='sigmoid', name='decoder_dense')
+	# 	]
+	# )
 
-	# print(x_train.shape[2], x_train.shape[1])
 
-	# model = keras.Sequential([
-	# 	layers.LSTM(50, activation='relu', input_shape=(x_train.shape[1], x_train.shape[2])),
-	# 	layers.Dense(1, activation='sigmoid', name='decoder_dense')])
+
+	model = keras.Sequential([
+		layers.LSTM(50, activation='relu', input_shape=(x_train.shape[1], x_train.shape[2])),
+		# layers.LSTM(50, activation='relu', return_sequences=True),
+		# layers.LSTM(50, activation='relu'),
+		layers.Dense(1, activation='sigmoid', name='decoder_dense')])
 
 	model.compile(optimizer=keras.optimizers.legacy.Adam(learning_rate=0.001), loss="mse", metrics=[
+																									# metrics.Accuracy(),
 																									# metrics.Precision(),
 																									# metrics.AUC(),
 																									metrics.MeanAbsoluteError(),
 																									metrics.MeanSquaredError(),
-																									metrics.Recall()
+																									# metrics.Recall()
 																									])
 	model.summary()
 
-	history = model.fit(x_train, x_train, epochs=100, batch_size=50, validation_split=0.1, verbose=0,
-	                    callbacks=[keras.callbacks.EarlyStopping(monitor="val_loss", patience=10, mode="min")])
+	history = model.fit(x_train, y_train, epochs=300, batch_size=50, validation_split=0.1, verbose=0,
+	                    callbacks=[keras.callbacks.EarlyStopping(monitor="mean_absolute_error", patience=10, mode="min")])
 
 	print(pd.DataFrame(history.history))
 
+	# mse = model.evaluate(x_test, y_test, verbose=0)
+
 	x_train_pred = model.predict(x_train)
-	train_mae_loss = np.mean(np.abs(x_train_pred - x_train), axis=1)
+	train_mae_loss = np.mean(np.abs(x_train_pred - y_train), axis=1)
 	threshold = np.max(train_mae_loss)
 
 	x_test_pred = model.predict(x_test)
