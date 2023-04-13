@@ -15,12 +15,10 @@ pd.options.display.expand_frame_repr = False
 
 
 def SearchAnomaly(df_full, df):
-	# split = 0.35
-	split = 200/len(df)
-	# print(df)
+	split = 0.25
+	# split = 200/len(df)
+
 	cutoff = int(len(df) * split)
-
-
 	scaler = MinMaxScaler(feature_range=(0, 1))
 
 	scaleddf = df.loc[:, ['GR']]
@@ -29,13 +27,14 @@ def SearchAnomaly(df_full, df):
 
 	train_df = scaleddf.head(cutoff)
 	test_df = scaleddf.tail(len(scaleddf) - cutoff)
+	train_df_for_exper = scaleddf.head(int(len(df)*0.5))
 
 
-	training_mean = train_df.mean()
-	training_std = train_df.std()
-	df_training_value = (train_df - training_mean) / training_std
+	# training_mean = train_df.mean()
+	# training_std = train_df.std()
+	# df_training_value = (train_df - training_mean) / training_std
 
-	df_test_value = (test_df - training_mean) / training_std
+	# df_test_value = (test_df - training_mean) / training_std
 
 	TIME_STEPS = 12
 
@@ -55,15 +54,17 @@ def SearchAnomaly(df_full, df):
 
 		return np.array(x)
 
-	x_train, y_train = create_sequencesXY(df_training_value.values)
-	x_test = create_sequencesX(df_test_value.values)
+	x_train, y_train = create_sequencesXY(train_df.values)
+	x_train_for_exper, y_train_for_exper = create_sequencesXY(train_df_for_exper.values)
+	x_test = create_sequencesX(test_df.values)
 
 	x_train = np.reshape(x_train, (x_train.shape[0], x_train.shape[1], 1))
+	x_train_for_exper = np.reshape(x_train_for_exper, (x_train_for_exper.shape[0], x_train_for_exper.shape[1], 1))
 	x_test = np.reshape(x_test, (x_test.shape[0], x_test.shape[1], 1))
 
-	print(x_train.shape)
-	print(y_train.shape)
-	print(x_test.shape)
+	# print(x_train.shape)
+	# print(y_train.shape)
+	# print(x_test.shape)
 
 	kernel_size = 7
 	strides= 2
@@ -88,9 +89,7 @@ def SearchAnomaly(df_full, df):
 
 
 	model = keras.Sequential([
-		layers.LSTM(50, activation='relu', input_shape=(x_train.shape[1], x_train.shape[2])),
-		# layers.LSTM(50, activation='relu', return_sequences=True),
-		# layers.LSTM(50, activation='relu'),
+		layers.LSTM(50, activation='softsign', input_shape=(x_train.shape[1], x_train.shape[2]), return_sequences=True),
 		layers.Dense(1, activation='sigmoid', name='decoder_dense')])
 
 	model.compile(optimizer=keras.optimizers.legacy.Adam(learning_rate=0.001), loss="mse", metrics=[
@@ -98,7 +97,7 @@ def SearchAnomaly(df_full, df):
 																									# metrics.Precision(),
 																									# metrics.AUC(),
 																									metrics.MeanAbsoluteError(),
-																									metrics.MeanSquaredError(),
+																									# metrics.MeanSquaredError(),
 																									# metrics.Recall()
 																									])
 	model.summary()
@@ -106,9 +105,12 @@ def SearchAnomaly(df_full, df):
 	history = model.fit(x_train, y_train, epochs=300, batch_size=50, validation_split=0.1, verbose=0,
 	                    callbacks=[keras.callbacks.EarlyStopping(monitor="mean_absolute_error", patience=10, mode="min")])
 
-	print(pd.DataFrame(history.history))
+	# print(pd.DataFrame(history.history))
 
-	# mse = model.evaluate(x_test, y_test, verbose=0)
+	mse = model.evaluate(x_train_for_exper, y_train_for_exper, verbose=0)
+
+	print(model.metrics_names)
+	print(mse)
 
 	x_train_pred = model.predict(x_train)
 	train_mae_loss = np.mean(np.abs(x_train_pred - y_train), axis=1)
@@ -129,7 +131,7 @@ def SearchAnomaly(df_full, df):
 
 	anomalies = test_mae_loss > threshold
 	anomalous_data_indices = []
-	for data_idx in range(TIME_STEPS - 1, len(df_test_value) - TIME_STEPS + 1):
+	for data_idx in range(TIME_STEPS - 1, len(x_test) - TIME_STEPS + 1):
 		if np.all(anomalies[data_idx - TIME_STEPS + 1: data_idx]):
 			anomalous_data_indices.append(data_idx)
 	df_subset = df_full.tail(len(df_full) - cutoff).iloc[anomalous_data_indices]

@@ -36,7 +36,7 @@ class App(Tk):
 		self.drawChart()
 
 		btnSearch = Button(fSelection, font="Courier 14", text="Поиск аномалий", command=self.neuronSearch)
-		self.neuronSearch()
+		# self.neuronSearch()
 		btnFileData = Button(fSelection, font="Courier 14", text="Выбрать файл данных", command=self.chooseFileData)
 		# btnData = Button(fSelection, text="Выбрать данные", command=self.chooseFileData)
 
