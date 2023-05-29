@@ -15,7 +15,7 @@ pd.options.display.expand_frame_repr = False
 
 
 def SearchAnomaly(df_full, df):
-	split = 0.25
+	split = 0.5
 	# split = 200/len(df)
 
 	cutoff = int(len(df) * split)
@@ -89,7 +89,7 @@ def SearchAnomaly(df_full, df):
 
 
 	model = keras.Sequential([
-		layers.LSTM(50, activation='softsign', input_shape=(x_train.shape[1], x_train.shape[2]), return_sequences=True),
+		layers.LSTM(50, activation='softsign', input_shape=(x_train.shape[1], x_train.shape[2])),
 		layers.Dense(1, activation='sigmoid', name='decoder_dense')])
 
 	model.compile(optimizer=keras.optimizers.legacy.Adam(learning_rate=0.001), loss="mse", metrics=[
@@ -142,6 +142,15 @@ def LoadSWRL(path):
 	onto = get_ontology("../../Sources/ontology/ontology_full.owl").load()
 	with onto:
 		return onto.rules()
+
+def SaveSWRL(path, new_rules):
+	onto = get_ontology("../../Sources/ontology/ontology_empty.owl").load()
+	with onto:
+		for new_rule_text in new_rules:
+			print(new_rule_text)
+			new_rule = Imp()
+			new_rule.set_as_rule(new_rule_text)
+		onto.save(file="../../Sources/ontology/ontology_empty.owl", format="rdfxml")
 
 
 def UsingOntology(df_anomaly, path):
