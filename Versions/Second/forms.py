@@ -64,7 +64,12 @@ class App(Tk):
 		self.btnSWRLLoad.grid(row=2, column=1, sticky="nw", padx=5)
 		# self.btnSWRLSave.grid(row=1, column=4, sticky="ew", padx=5)
 
-		self.listboxSWRL = Listbox(self.fView, width=100, height=75)
+		self.list_scrollbar = Scrollbar(self.fView, orient=HORIZONTAL)
+		self.listboxSWRL = Listbox(self.fView, width=100, height=45, yscrollcommand=self.list_scrollbar.set)
+		self.list_scrollbar.config(command=self.listboxSWRL.yview)
+
+
+		#self.listboxSWRL.config(wrap=WORD, wraplength=100)
 
 		self.add_button = Button(self.fView, font="Courier 14", text="Добавить", command=self.add_item)
 		self.remove_button = Button(self.fView, font="Courier 14", text="Удалить", command=self.remove_item)
@@ -90,7 +95,9 @@ class App(Tk):
 		listSWRL = LoadSWRL(self.labelOWL["text"])
 		for SWRL in listSWRL:
 			self.listboxSWRL.insert(END, str(SWRL))
-		self.listboxSWRL.grid(row=2, column=2, sticky="nw", padx=5, columnspan=2)
+		self.listboxSWRL.grid(row=2, column=2, sticky="nwe", padx=5, columnspan=2)
+		self.list_scrollbar.grid(row=3, column=2, sticky="nwe", padx=5, columnspan=2)
+
 		self.entry.grid(row=0, column=2, sticky="nwe", padx=5, columnspan=2)
 		self.add_button.grid(row=1, column=2, sticky="nwe", padx=5)
 		self.remove_button.grid(row=1, column=3, sticky="nwe", padx=5)
@@ -101,11 +108,12 @@ class App(Tk):
 	def saveSWRLRules(self):
 
 		self.listboxSWRL.grid_remove()
+		self.list_scrollbar.grid_remove()
 		self.entry.grid_remove()
 		self.add_button.grid_remove()
 		self.remove_button.grid_remove()
 
-		self.btnSWRLLoad.grid(row=3, column=1, sticky="nwe", padx=5)
+		self.btnSWRLLoad.grid(row=3, column=1, sticky="nw", padx=5)
 		self.btnSWRLSave.grid_remove()
 
 		new_rules = self.listboxSWRL.get(0, END)
@@ -152,7 +160,7 @@ class App(Tk):
 
 		# self.fig, self.axex = plt.subplots(nrows=3, ncols=1)
 		self.fig.subplots_adjust(left=0.040, bottom=0.05, right=0.95, top=0.95)
-		self.fig.set_size_inches(10, 9)
+		self.fig.set_size_inches(10, 8)
 		canvas = FigureCanvasTkAgg(self.fig, self.fView)
 		canvas.draw()
 		canvas.get_tk_widget().grid(row=0, column=0, sticky="nw", padx=5, rowspan=3)

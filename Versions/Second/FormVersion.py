@@ -146,6 +146,12 @@ def LoadSWRL(path):
 def SaveSWRL(path, new_rules):
 	onto = get_ontology("../../Sources/ontology/ontology_empty.owl").load()
 	with onto:
+
+		swrl_assertions = list(onto.rules())
+		for swrl_assertion in swrl_assertions:
+			destroy_entity(swrl_assertion)
+			#onto.world.remove(swrl_assertion)
+
 		for new_rule_text in new_rules:
 			print(new_rule_text)
 			new_rule = Imp()
